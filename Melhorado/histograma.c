@@ -1,5 +1,4 @@
-//Vinícius Oliveira dos Santos    GRR20182592
-//IMPLEMENTAÇÃO DO HISTOGRAMA DO GERADOR COM OS VALORES BONS DE A, C E M
+//IMPLEMENTAÇÃO DO HISTOGRAMA DO GERADOR 
 
 #include <stdio.h>
 #include "lcrandom.h"
@@ -29,7 +28,9 @@ void R3 (unsigned long v[], unsigned long contmax){
 }
 
 //A função histograma é responsável pela impressão adequada do meu gráfico
-void histograma (unsigned long v[], int h_max){
+void histograma (unsigned long v[]){
+	printf("   0   10   20   30   40   50   60   70   80   90   100\n");
+	printf("   +----+----+----+----+----+----+----+----+----+----+\n");
 	for (long int i=0; i<MAXVET; i++){  //Controla a variação vertical do gráfico
 		if (i/10<1)
 			printf(" %ld|", i);
@@ -41,6 +42,7 @@ void histograma (unsigned long v[], int h_max){
 		
 		printf("\n");
 	}
+	printf("   +----+----+----+----+----+----+----+----+----+----+\n");
 }
 
 void limpa_vetor (unsigned long v[]){
@@ -49,31 +51,30 @@ void limpa_vetor (unsigned long v[]){
 }
 
 //A função gerador será responsável por usar a congruência linear para gerar os números pseudoaleatórios e contar suas repetições
-void gerador (unsigned long v[], unsigned long M, unsigned long s) {
+void gerador (unsigned long v[], unsigned long M) {
 	int xi;
-	for (long int i=s; i<M; i++){
-		xi=(lcrandom()%MAXVET); //Gero um número pseudoaleatório
-		v[xi]++; //Loco quantas vezes cada valor repetiu no intervalo de [0..99]
+	xi = lcrandom_seed();
+	for (long int i=xi; i<M; i++){
+		xi=(lcrandom(xi)%MAXVET); //Gero um número pseudoaleatório
+		v[xi]++; //Aloco quantas vezes cada valor repetiu no intervalo de [0..99]
 	}
-}
+}	
 
 //No main mantenho a chamada de todas as funções com suas respectivas necessidades para sua funcionalidade 
 int main () {
 	//Inicializo os parâmetros e limites da minha criação de números pseudoaleatórios
-	lcrandom_parms (1103515245,12345, 1073741824);	
-	unsigned long v[MAXVET], contmax, s=0;
-	lcrandom_seed(s);
+	unsigned long a=0,c=0,m=0;
+	printf("Entre com parametro A C M nessa ordem\n");
+	scanf("%ld %ld %ld", &a, &c, &m);
+	lcrandom_parms (a,c, m);
 	
-	printf("   0   10   20   30   40   50   60   70   80   90   100\n");
-	printf("   +----+----+----+----+----+----+----+----+----+----+\n");
+	unsigned long v[MAXVET], contmax;
 	
 	limpa_vetor(v); //Preciso que esteja locado zeros em meus vetor para que não venha lixo de memória	
-	gerador(v,1000000,s); //Gero meus números pseudoaleatórios
+	gerador(v,1000000); //Gero meus números pseudoaleatórios
 	contmax=Acha_maior(v); //contmax recebe o maior numero de repetições de um pseudoaleatório 
 	R3(v,contmax); //Normalizo fazendo a regra de 3
-	histograma(v, MAXVET); //Imprimo o histograma
-	
-	printf("   +----+----+----+----+----+----+----+----+----+----+\n");
+	histograma(v); //Imprimo o histograma
 	
 	return(0);
 }
