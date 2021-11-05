@@ -1,5 +1,5 @@
 # Geracao-de-Numeros-Aleatorios
-Atividade acadêmica da disciplina Oficina de Computação ministrada pelo professor Carlos Maziero.
+Atividade acadêmica da disciplina Oficina de Computação ministrada pelo professor Carlos Maziero com alguma mudanças e melhorias.
 
 Fórmula de congruência linear: xi+1 = (A · xi + C) mod M
 
