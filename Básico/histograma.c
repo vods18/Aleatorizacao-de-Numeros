@@ -1,4 +1,4 @@
-//Vinícius Oliveira dos Santos    GRR20182592
+
 //IMPLEMENTAÇÃO DO HISTOGRAMA DO GERADOR COM OS VALORES DEFAULT DE A, C E M
 
 #include <stdio.h>
