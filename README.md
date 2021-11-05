@@ -4,6 +4,8 @@ Atividade acadêmica da disciplina Oficina de Computação ministrada pelo profe
 Fórmula de congruência linear: xi+1 = (A · xi + C) mod M
 
 Parâmetros que usei para testes básicos A,C e M respectivamente: 40692 127 10000000
+
+
 Parâmetros que usei para testes complexos A,C e M respectivamente: 1103515245 12345 1073741824
 
 ### Como executar:
