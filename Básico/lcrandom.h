@@ -3,11 +3,11 @@
 #define __LCRANDOM__
      
 // calcula e devolve um valor pseudoaleatório
-unsigned long lcrandom () ;
+unsigned long lcrandom (unsigned long x) ;
      
 // define o valor inicial (semente) da sequência de aleatórios
 // (inicialmente zero (0) por default
-void lcrandom_seed (unsigned long s) ;
+unsigned long lcrandom_seed () ;
      
 // informa o valor máximo que pode ser gerado (o mínimo é sempre zero)
 unsigned long lcrandom_max () ;
