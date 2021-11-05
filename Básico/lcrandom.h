@@ -1,4 +1,4 @@
-// ATENCAO: ESTE ARQUIVO NAO DEVE SER ALTERADO!
+
 #ifndef __LCRANDOM__
 #define __LCRANDOM__
      
