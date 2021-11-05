@@ -1,20 +1,23 @@
-//Vinícius Oliveira dos Santos    GRR20182592
 //IMPLEMENTAÇÃO DAS FUNÇÕES DO GERADOR DE ALEATÓRIOS
 
 #include "lcrandom.h"
+#include <stdio.h>
 
-//Minhas variáveis globais definidas para serem "vistas" apenas nesse escopo
-static unsigned long x, m, a, c;
+//Minhas variáveis globais definidas para serem vistas apenas nesse escopo
+static unsigned long  m, a, c;
 
 //Calcula e devolve valor pseudoaleatório 
-unsigned long lcrandom () {		
+unsigned long lcrandom (unsigned long x) {		
 	x = (a*x + c) % (int)m;
 	return(x);
 }
 
-//Defini valor inicial
-void lcrandom_seed (unsigned long s) {
-	s=0;
+//Define valor inicial
+unsigned long lcrandom_seed () {
+	unsigned long s=0;
+	printf("Entre com a seed\n");
+	scanf("%ld", &s); //por default minha seed sera zero, podendo ser alguma outra tambem
+	return(s);
 }	
 
 //Define o valor máximo a ser gerado
